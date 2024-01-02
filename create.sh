@@ -7,13 +7,13 @@ set -vx
 resourcePrefix="aro-openshit-dev-001"
 #aroDomain="${resourcePrefix,,}"
 #aroDomain="xyz"
-aroDomain= "aroplay.openshiftdemo.dev"
+aroDomain="aroplay.openshiftdemo.dev"
 #aroClusterServicePrincipalDisplayName="${resourcePrefix}-aro-sp-${RANDOM}"
 aroClusterServicePrincipalDisplayName="${resourcePrefix}-sp"
 pullSecret=$(cat pull-secret.txt)
 # Name and location of the resource group for the Azure Red Hat OpenShift (ARO) cluster
 aroResourceGroupName="${resourcePrefix}-RG"
-location="uscentral"
+location="eastus"
 
 # Subscription id, subscription name, and tenant id of the current subscription
 subscriptionId=$(az account show --query id --output tsv)
