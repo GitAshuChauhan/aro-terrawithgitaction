@@ -4,15 +4,16 @@ set -vx
 
 # ARO cluster name
 #resourcePrefix="<azure-resources-name-prefix>"
-resourcePrefix="aro-openshit-dev-cac-001"
+resourcePrefix="aro-openshit-dev-001"
 #aroDomain="${resourcePrefix,,}"
-aroDomain="xyz"
+#aroDomain="xyz"
+aroDomain= "aroplay.openshiftdemo.dev"
 #aroClusterServicePrincipalDisplayName="${resourcePrefix}-aro-sp-${RANDOM}"
 aroClusterServicePrincipalDisplayName="${resourcePrefix}-sp"
-pullSecret=$(cat /Users/alirezarahmani/Repo/aro-azapi-terraform/pull-secret.txt)
+pullSecret=$(cat pull-secret.txt)
 # Name and location of the resource group for the Azure Red Hat OpenShift (ARO) cluster
 aroResourceGroupName="${resourcePrefix}-RG"
-location="canadacentral"
+location="uscentral"
 
 # Subscription id, subscription name, and tenant id of the current subscription
 subscriptionId=$(az account show --query id --output tsv)

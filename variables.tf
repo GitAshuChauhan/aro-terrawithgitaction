@@ -98,12 +98,15 @@ variable "tags" {
     createdWith = "Terraform"
     environment = "Development"
     department  = "Ops"
+    owner = "AChauhan1@galaxe.com"
+    date =  "01/02/2024"
+    AppName = "ARO DEV PLATFORM"
   }
 }
 
 variable "api_server_visibility" {
   description = "Specifies the API Server visibility for the Azure Red Hat OpenShift cluster."
-  default     = "Public"
+  default     = "Private"
   validation {
     condition     = contains(["Private", "Public"], var.api_server_visibility)
     error_message = "The value of the api_server_visibility parameter is invalid."
@@ -118,7 +121,7 @@ variable "ingress_profile_name" {
 
 variable "ingress_visibility" {
   description = "Specifies the ingress visibility for the Azure Red Hat OpenShift cluster."
-  default     = "Public"
+  default     = "Private"
   validation {
     condition     = contains(["Private", "Public"], var.ingress_visibility)
     error_message = "The value of the ingress_visibility parameter is invalid."
@@ -170,4 +173,13 @@ variable "aro_cluster_aad_sp_object_id" {
 variable "aro_rp_aad_sp_object_id" {
   description = "Specifies the object id of the service principal of the ARO resource provider."
   type        = string
+}
+
+variable "outbound_type" {
+  type        = string
+  description = <<EOF
+  Outbound Type - Loadbalancer or UserDefinedRouting
+  Default "Loadbalancer"
+  EOF
+  default     = "UserDefinedRouting"
 }
