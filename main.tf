@@ -97,7 +97,7 @@ resource "azapi_resource" "aro_cluster" {
   name      = "${var.resource_prefix != "" ? var.resource_prefix : random_string.resource_prefix.result}Aro"
   location  = var.location
   parent_id = data.azurerm_resource_group.resource_group.id
-  type      = "Microsoft.RedHatOpenShift/openShiftClusters@2022-04-01"
+  type      = "Microsoft.RedHatOpenShift/openShiftClusters@2023-04-01"
   tags      = var.tags
 
   body = jsonencode({
@@ -106,11 +106,12 @@ resource "azapi_resource" "aro_cluster" {
         domain               = var.domain
         fipsValidatedModules = var.fips_validated_modules
         resourceGroupId      = local.resource_group_id
-        #        pullSecret           = var.pull_secret
+        pullSecret           = var.pull_secret
       }
       networkProfile = {
         podCidr     = var.pod_cidr
         serviceCidr = var.service_cidr
+        outbound_type = var.outbound_type
       }
       servicePrincipalProfile = {
         clientId     = var.aro_cluster_aad_sp_client_id
