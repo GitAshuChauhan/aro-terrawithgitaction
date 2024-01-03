@@ -61,7 +61,7 @@ roleName='User Access Administrator'
 az role assignment create \
   --role "$roleName" \
   --assignee-object-id $aroClusterServicePrincipalObjectId \
-  --resource-group $aroResourceGroupName \
+  --scope "/subscriptions/${subscriptionId}/resourceGroups/${aroResourceGroupName}"
   --assignee-principal-type 'ServicePrincipal' >/dev/null
 
 if [[ $? == 0 ]]; then
