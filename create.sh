@@ -4,15 +4,16 @@ set -vx
 
 # ARO cluster name
 #resourcePrefix="<azure-resources-name-prefix>"
-resourcePrefix="aro-openshit-dev-cac-001"
+resourcePrefix="aro-openshit-dev-001"
 #aroDomain="${resourcePrefix,,}"
-aroDomain="xyz"
+#aroDomain="xyz"
+aroDomain="aroplay.openshiftdemo.dev"
 #aroClusterServicePrincipalDisplayName="${resourcePrefix}-aro-sp-${RANDOM}"
 aroClusterServicePrincipalDisplayName="${resourcePrefix}-sp"
-pullSecret=$(cat /Users/alirezarahmani/Repo/aro-azapi-terraform/pull-secret.txt)
+pullSecret=$(cat pull-secret.txt)
 # Name and location of the resource group for the Azure Red Hat OpenShift (ARO) cluster
 aroResourceGroupName="${resourcePrefix}-RG"
-location="canadacentral"
+location="eastus"
 
 # Subscription id, subscription name, and tenant id of the current subscription
 subscriptionId=$(az account show --query id --output tsv)
@@ -60,7 +61,7 @@ roleName='User Access Administrator'
 az role assignment create \
   --role "$roleName" \
   --assignee-object-id $aroClusterServicePrincipalObjectId \
-  --resource-group $aroResourceGroupName \
+  --scope "subscriptions/${subscriptionId}/resourceGroups/${aroResourceGroupName}" \
   --assignee-principal-type 'ServicePrincipal' >/dev/null
 
 if [[ $? == 0 ]]; then
@@ -75,7 +76,7 @@ roleName='Contributor'
 az role assignment create \
   --role "$roleName" \
   --assignee-object-id $aroClusterServicePrincipalObjectId \
-  --resource-group $aroResourceGroupName \
+  --scope "subscriptions/${subscriptionId}/resourceGroups/${aroResourceGroupName}" \
   --assignee-principal-type 'ServicePrincipal' >/dev/null
 
 if [[ $? == 0 ]]; then
