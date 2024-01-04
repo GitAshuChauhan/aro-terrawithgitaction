@@ -11,10 +11,10 @@ terraform {
     }
   }
   cloud {
-    organization = "OpenShift"
+    organization = "AroCluster"
 
     workspaces {
-      name = "aro-terra-gitaction"
+      name = "arro-testtera"
     }
   }
 
