@@ -4,7 +4,7 @@ variable "resource_prefix" {
 }
 
 variable "location" {
-  description = "Specifies the location of Azure resource."
+  description = "Specifies the location of Azure resources."
   type        = string
 }
 
