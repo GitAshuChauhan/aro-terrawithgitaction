@@ -19,7 +19,7 @@ variable "domain" {
 }
 
 variable "pull_secret" {
-  description = "Specifies the pull secret from cloud.redhat.com. The JSON should be provided as a string."
+  description = "Specifies the openshift pull secret from cloud.redhat.com. The JSON should be provided as a string."
   type        = string
 }
 
@@ -98,9 +98,9 @@ variable "tags" {
     createdWith = "Terraform"
     environment = "Development"
     department  = "Ops"
-    owner = "AChauhan1@galaxe.com"
-    date =  "01/02/2024"
-    AppName = "ARO DEV PLATFORM"
+    owner       = "AChauhan1@galaxe.com"
+    date        = "01/02/2024"
+    AppName     = "ARO DEV PLATFORM"
   }
 }
 
