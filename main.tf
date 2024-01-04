@@ -109,8 +109,8 @@ resource "azapi_resource" "aro_cluster" {
         pullSecret           = var.pull_secret
       }
       networkProfile = {
-        podCidr     = var.pod_cidr
-        serviceCidr = var.service_cidr
+        podCidr       = var.pod_cidr
+        serviceCidr   = var.service_cidr
         outbound_type = var.outbound_type
       }
       servicePrincipalProfile = {
